@@ -1,0 +1,12 @@
+node_modules
+dist
+.DS_Store
+.env
+
+# Ignore the output video from Git but not videos you import into src/.
+out
+
+# Raw recordings are too large for git (>100 MB); keep only recording-clean.mp4.
+public/episodes/*/recording.mov
+public/episodes/*/recording.MOV
+/causalarmor.mp4

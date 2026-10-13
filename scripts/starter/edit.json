@@ -1,0 +1,4 @@
+{
+  "keep": [[0, 9999]],
+  "captionFixes": [{ "match": ["misheard"], "replace": [" corrected"] }]
+}

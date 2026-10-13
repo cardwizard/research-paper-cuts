@@ -1,0 +1,13 @@
+{
+  "keep": [
+    [1.1, 100.6],
+    [102.14, 126.27]
+  ],
+  "captionFixes": [
+    { "match": ["adam."], "replace": [" random."] },
+    { "match": ["dominant"], "replace": [" dominance"] },
+    { "match": ["agent", "dojo"], "replace": [null, "Dojo"] },
+    { "match": ["2", "marina"], "replace": [" Doom", "Arena"] },
+    { "match": ["causal", "armor"], "replace": [null, "Armor"] }
+  ]
+}
