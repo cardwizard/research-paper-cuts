@@ -126,6 +126,21 @@ a timestamped source -> action -> consequence entry and an implemented
 animation. Inspect before/during/after states and reject label-only substitutes.
 Keep the mapping with the episode's storyboard or evidence ledger.
 
+**Frame completeness:** captions occupy an exclusive band from the first
+narrated frame through closing. Use the bookend-specific layout, not the
+normal story caption position on full-screen artwork. Fit or repaginate
+captions without deleting spoken words; validate actual bounding boxes
+against logo, title, tagline, paper, cast, and website across motion.
+Required arrows include visible shafts and heads, correct direction, and
+anchors that follow their source/destination. An arrow may end only when
+its explanatory beat ends; no unexplained missing connectors or detached
+arrowheads. Essential scene elements must be ready before outgoing content
+disappears. Intentional entrances are allowed; half-built mechanisms and
+accidental empty transitions during explanation are not.
+Evaluate motion from frame numbers, not clocks, random state, or playback
+history. Inspect the encoded output at the opening, every transition/beat,
+and closing; a correct Studio screenshot is not proof of a complete export.
+
 **Background sound:** optional, original or appropriately licensed,
 instrumental and restrained. No vocals, dramatic drops, or loud transitions.
 Maintain narration at least 18 dB above the bed's mean level, verify combined

@@ -59,6 +59,11 @@ generic explainer is not an acceptable substitute.
 7. **Nothing overflows.** No text spills outside its box, nothing is clipped
    by the panel edge, nothing overlaps the presenter inset, captions, or
    footer. Check with stills, not assumptions.
+   Reserve a separate caption band from the first narrated frame, including
+   both bookends; never place captions on the paper artwork, title, tagline,
+   or website. Keep required arrow shafts and heads anchored, visible, and
+   correctly timed. Reject incomplete exported scenes or accidental blank
+   transitions; check the encoded MP4, not only the Studio preview.
 8. **Restrained, human design.** Use the palette and type in
    `src/template/brand.ts`. No neon, gradients, glows, emoji, decorative
    grids, glassmorphism, or thick one-sided colored borders. It should not

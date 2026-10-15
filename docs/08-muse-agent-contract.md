@@ -65,6 +65,32 @@ one primary action at a time; hold the result long enough to read.
 Do not animate unrelated flourishes while the viewer needs to understand a step.
 No text or document may cover the AI role tag, face, captions, or other labels.
 
+### Captions, arrows, and complete frames: hard requirements
+
+- Reserve an exclusive caption band from the first narrated frame, including
+  opening and closing. Do not reuse the normal story caption position over
+  bookend artwork. In the current source, bookends use the small band near
+  y=342 instead of the story's y=405 placement; reuse the native layout.
+  Check real text bounds through the artwork's motion. Captions must never
+  overwrite the logo, paper, tagline, title, CTA, or website. Repaginate long
+  phrases to fit; do not hide words or delay narration/captions to avoid collisions.
+- Required connectors must show both shaft and arrowhead, correct direction,
+  attached endpoints, and continuous visibility for the intended beat.
+  Connectors move with their objects. Missing arrows, detached heads, arrows
+  pointing at empty space, or unexplained disappearances fail acceptance.
+  An isolated arrow is still not a substitute for the mechanism's animation.
+- Complete every explanatory frame. Keep the outgoing subject visible until
+  the incoming subject is ready. An intentional entrance is not a defect;
+  a blank panel under an explanation or a partially assembled mechanism is.
+  Preload media and fonts; calculate animation from frame/time values,
+  never wall-clock timers, unseeded randomness, or playback-dependent state.
+- Inspect the final encoded MP4, not only preview screenshots: opening
+  frame-by-frame, both sides of every scene boundary, before/during/after
+  every important action, and closing. Verify complete media decoding,
+  frame cadence/count, timeline coverage, and visual completeness separately.
+  Fix and re-export any missing arrow, unresolved asset, collision, or
+  incomplete frame before delivery; do not deliver it as a finished video.
+
 MUST audit the actual narration sentence by sentence for animation points.
 Record each important sentence's trigger word/time, source object, action,
 and consequence in the beat mapping. Implement each entry and verify its
@@ -107,6 +133,8 @@ static mechanisms; captions clipped or mistimed; role swaps; early result
 reveals; overlapping labels; more than one real paper image; invented evidence;
 reader shown sending a file; narration restart under closing; extra silent intro;
 essential text below y=1515; placeholder title; missing editable artifacts.
+Also reject opening-caption collisions, missing/detached required arrows,
+and incomplete explanatory frames even when the video file decodes normally.
 
 For Remotion, run `npm run lint`, render review stills, and verify output with
 `ffprobe`. Watch the complete export with sound, then on mute. State any
@@ -125,7 +153,9 @@ they are not a claim of a complete listening review.
 
 | Supplied-video time | Observed difference | Required correction |
 | --- | --- | --- |
+| 00:00.5-00:02.5 | Opening narration captions cross the animated paper's top edge instead of occupying a separate band | Use the bookend caption band from the first spoken word and check moving-artwork bounds; keep narration/captions continuous |
 | 00:29-00:33 | Email, READ label, robot, and attacker line mostly hold; an "Attach forecast" chip fades in, without showing a selected file changing | Track one object: email content enters, becomes a directive, brochure selection changes to restricted forecast. Do not call the pre-CaMeL agent the AI READER: it can decide/act, unlike the quarantined reader |
+| About 00:33 | The outgoing explanatory scene disappears into a panel containing only the small host before the paper/title appears | Keep the previous subject until the incoming subject is ready; inspect boundary frames in the encoded MP4 for incomplete scenes |
 | 01:08-01:20 | Fields, program rows, and "orders BLOCKED" labels mostly remain in place | Show fields travelling into harness variables and activating already-written steps; an attempted return stops at a visible planner boundary |
 | 01:44-01:56 | Public/private labels give way to a detective and an explanatory sentence; no restricted document attempts to cross a gate | Show the document approaching an interpreter/policy gate, being stopped, and the public brochure passing. A detective alone does not explain enforcement and must not imply a third decision-making model |
 | 02:06-02:10 | The chart counts upwards, displays 1 during transition, and settles at 44/0; the 949-attack scope, uncertainty, and table reference are absent | Animate the bar, not a counter through false intermediate measurements. Reveal 44 +/-31.3 and 0 +/-0.0 at the spoken numbers; identify AgentDojo, Claude 3.5 Sonnet, 949 attacks, and Table 7. Zero must not be visible before its spoken reveal |
@@ -135,6 +165,10 @@ Use the checked-in clean recording and prepared captions rather than the raw
 take. The approved local edit is 143.8 seconds; do not force a 148.117-second
 timeline or repair spoken errors by changing captions alone. Reuse the actual
 bookend clips instead of reconstructing their animation from screenshots.
+The creator also reported intermittently missing arrows and incomplete frames.
+Those reports are acceptance blockers to check, not evidence of a particular
+render-engine cause. The supplied file fully decodes without reported media
+errors; that does not make its blank/partial explanatory scenes acceptable.
 
 ## Pasteable Muse kickoff
 
@@ -180,3 +214,12 @@ bookend clips instead of reconstructing their animation from screenshots.
 > every mechanism. Verify there are no label collisions, blank explanatory
 > transitions, clipped captions, premature numbers, or scientific role errors.
 > Flag unsupported requirements instead of replacing them with generic visuals.
+>
+> Reserve a non-overlapping caption band from the very first narrated frame,
+> including both bookends; captions must not cover the paper, logo, title,
+> tagline, CTA, or website. Ensure every required arrow has its shaft/head,
+> correct direction, anchored endpoints, and intended visibility. Preload assets
+> and fonts; use deterministic frame-based animation. Inspect the actual MP4
+> frame-by-frame at the opening and around every transition, not just Studio.
+> Reject incomplete scenes, empty explanatory panels, missing arrows, and
+> unresolved assets; fix and re-export before calling the video finished.

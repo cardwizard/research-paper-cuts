@@ -34,6 +34,13 @@ Look at every image and check:
 - [ ] Colors follow meaning (red = danger only).
 - [ ] Captions are spelled correctly (names, paper title, benchmarks).
 - [ ] Captions run throughout approved bookends in their reserved band.
+- [ ] Opening captions do not overwrite the paper illustration, title, tagline,
+      or logo; closing captions do not overwrite the CTA or website. Check
+      actual text bounds while artwork moves, not only its final position.
+- [ ] Each required connector has its shaft and arrowhead, correct direction,
+      and attached endpoints throughout its explanatory beat.
+- [ ] Scene entrances/transitions retain the explanatory subject; no accidental
+      empty panel, missing object, detached arrow, or half-built diagram.
 
 ## Story
 
@@ -55,3 +62,12 @@ Look at every image and check:
 - [ ] `npm run render -- <slug>`; `ffprobe` shows `1080,1920,30/1` and expected duration.
 - [ ] Spot-check 3 frames from the final MP4 with
       `ffmpeg -ss <sec> -i out/<slug>.mp4 -frames:v 1 /tmp/x.png`.
+- [ ] Also inspect the encoded opening frame by frame, the frames immediately
+      before/after every scene boundary, each animation's before/during/after,
+      and the closing. A Studio preview is not sufficient export QA.
+- [ ] Decode the full export (`ffmpeg -v error -i out/<slug>.mp4 -f null -`);
+      verify frame cadence/count and timeline coverage, not just container
+      metadata. A file that decodes can still contain visually incomplete scenes.
+- [ ] Asset/font loading completes before export; animation is deterministic
+      from frame numbers, with no clock, random, or asynchronous state that
+      can hide elements when rendered out of order.
