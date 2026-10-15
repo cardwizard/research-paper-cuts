@@ -15,6 +15,7 @@ export const causalArmor: Episode = {
   slug: "causal-armor",
   recording: "episodes/causal-armor/recording-clean.mp4",
   hook: "What if AI defense were a detective, not a bouncer?",
+  bookendPaperTitle: "CausalArmor",
   citation: "CausalArmor · arXiv:2602.07918 · Google DeepMind",
   captions: captions as Caption[],
   scenes: [

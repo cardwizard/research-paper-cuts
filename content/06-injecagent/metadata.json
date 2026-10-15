@@ -1,0 +1,31 @@
+{
+  "order": 6,
+  "category": "security-evaluations",
+  "slug": "injecagent",
+  "title": "InjecAgent: Benchmarking Indirect Prompt Injections in Tool-Integrated Large Language Model Agents",
+  "paper_url": "https://aclanthology.org/2024.findings-acl.624/",
+  "paper_version": "arXiv:2403.02691v3",
+  "paper_date": "2024-08-04",
+  "status": "draft",
+  "affiliations": [
+    {
+      "author": "Qiusi Zhan",
+      "institutions": ["University of Illinois Urbana-Champaign"]
+    },
+    {
+      "author": "Zhixiang Liang",
+      "institutions": ["University of Illinois Urbana-Champaign"]
+    },
+    {
+      "author": "Zifan Ying",
+      "institutions": ["University of Illinois Urbana-Champaign"]
+    },
+    {
+      "author": "Daniel Kang",
+      "institutions": ["University of Illinois Urbana-Champaign"]
+    }
+  ],
+  "script_word_count": 190,
+  "estimated_script_runtime_seconds": 81,
+  "runtime_basis": "Spoken word count at 140 words per minute; canonical outro included."
+}

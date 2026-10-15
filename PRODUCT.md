@@ -13,9 +13,12 @@ technical vocabulary.
 **Promise:** Explain one paper's central idea clearly, show where it comes from,
 and distinguish the authors' reported findings from the video's interpretation.
 
-**Core format:** A portrait video led by the creator's voice and face. Open with
-a concise question, use diagrams only to clarify the narration, show relevant
-paper pages or figures, and keep captions readable throughout.
+**Core format:** A portrait cartoon story led by the creator's voice and face.
+The spoken hook begins under the approved shared opening; the paper title is
+the only episode-specific opening text. Characters act out the mechanism;
+diagrams may support action but never replace it. Show the real paper once
+at its introduction, keep captions readable throughout, and place the shared
+closing over the final narration without extending the timeline.
 
 **Editorial boundaries:** Keep the creator's delivery recognizable, preserve
 the meaning of technical terms, and avoid claims not supported by the paper.

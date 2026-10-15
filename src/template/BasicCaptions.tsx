@@ -14,6 +14,7 @@ type BasicCaptionsProps = InteractiveTransformProps &
   Pick<SequenceProps, "width"> & {
     readonly captions: Caption[];
     readonly combineTokensWithinMilliseconds?: number;
+    readonly fontSize?: number;
   };
 
 const defaultCombineTokensWithinMilliseconds = 3000;
@@ -37,6 +38,14 @@ const basicCaptionsSchema = {
     description: "Time between caption pages",
     hiddenFromList: false,
   },
+  fontSize: {
+    type: "number",
+    min: 17,
+    step: 1,
+    default: 52,
+    description: "Caption font size",
+    hiddenFromList: false,
+  },
 } as const satisfies InteractivitySchema;
 
 const BasicCaptionsContent: React.FC<BasicCaptionsProps> = ({
@@ -44,6 +53,7 @@ const BasicCaptionsContent: React.FC<BasicCaptionsProps> = ({
   combineTokensWithinMilliseconds = defaultCombineTokensWithinMilliseconds,
   style,
   width = defaultWidth,
+  fontSize = 52,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -77,7 +87,7 @@ const BasicCaptionsContent: React.FC<BasicCaptionsProps> = ({
           style={{
             color: "#fffdf7",
             fontFamily: "Avenir Next, Helvetica Neue, Arial, sans-serif",
-            fontSize: 52,
+            fontSize,
             fontWeight: 700,
             letterSpacing: -0.4,
             lineHeight: 1.16,

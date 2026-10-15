@@ -1,0 +1,10 @@
+{
+  "keep": [[0.5, 89.08], [91.72, 107.18], [108.22, 147.88]],
+  "captionFixes": [
+    { "match": ["caml."], "replace": [" CaMeL."] },
+    { "match": ["campbell"], "replace": [" CaMeL"] },
+    { "match": ["camel."], "replace": [" CaMeL."] },
+    { "match": ["clod"], "replace": [" Claude"] },
+    { "match": ["agent", "dojo"], "replace": [" Agent", "Dojo"] }
+  ]
+}

@@ -44,9 +44,18 @@ Both accept `paperTitle`, `audioSrc`, and `audioStartSeconds`.
 Keep `audioSrc: ""` when an existing master narration track is playing.
 Use the opening at frame zero and the closing at
 `durationInFrames - 4 * fps`, without changing total episode duration.
-Do not stack the existing `EpisodeLayout` title card over the opening:
-set its `titleCardMs` to zero when integrating these approved bookends.
+Do not stack a legacy title card over the opening. For manual integration
+outside the native opt-in below, disable that title card (`titleCardMs: 0`).
 Existing episodes are not automatically migrated by this package.
+
+In this repository's `EpisodeLayout`, opt in with
+`bookendPaperTitle: "CausalArmor"` in the episode config. This replaces the old
+title card and final visuals without moving narration or changing duration.
+The old title-card settings are ignored for opted-in episodes. To avoid
+collisions with the full-screen artwork, the layout uses short caption pages
+at 36 px in the free band beneath the logo during the bookends, returning
+to the usual presenter captions during the story.
+CausalArmor and CaMeL use this opt-in.
 
 For standalone preview with speech, `audioSrc` is relative to `public/`;
 `audioStartSeconds` selects the source offset. Do not add a second copy of

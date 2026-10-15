@@ -1,48 +1,153 @@
-# Series design direction
+---
+name: Research Paper Cuts
+description: Research, made clear.
+colors:
+  background: "#f1efe9"
+  paper: "#faf9f6"
+  ink: "#242521"
+  muted: "#595b55"
+  system-blue: "#355f83"
+  safe-green: "#2e684d"
+  risk-red: "#9b4141"
+  caution-ochre: "#8a5100"
+  border: "#d2cfc6"
+  danger-paper: "#f6e6e1"
+  document-lines: "#a9a59b"
+  caption-white: "#fffdf7"
+  legacy-title-backdrop: "#171817"
+typography:
+  heading:
+    fontFamily: "Helvetica Neue, Arial, sans-serif"
+    fontSize: "46px"
+    fontWeight: 700
+    lineHeight: 1.08
+  caption:
+    fontFamily: "Avenir Next, Helvetica Neue, Arial, sans-serif"
+    fontSize: "52px"
+    fontWeight: 700
+    lineHeight: 1.16
+---
 
-## Format
+## Overview
 
-- **Canvas:** 1080×1920 at 30 fps for Instagram Reels and LinkedIn mobile feeds.
-- **Opening:** Full-height presenter crop with the series logo, a one-line hook
-  question, and the waving host cartoon.
-- **Cast:** The recurring cast below. Repeat the same drawings, colors, and
-  roles throughout every episode.
-- **Visual tone:** Editorial and human, with warm paper-like neutrals, dark
-  readable text, and restrained color reserved for trust and risk distinctions.
-- **Layout:** Built for Instagram/LinkedIn safe zones: presenter inset at the
-  top center, captions directly under it, the scene panel below, and only
-  non-essential branding in the bottom ~400 px the apps cover. See
-  docs/03-visual-system.md.
-- **Typography:** Familiar sans-serif, clear size hierarchy, short lines, and
-  captions in a bold editorial face with a fine dark outline, no backing panel,
-  and placement in the lower safe area.
-- **Evidence:** Show a screenshot of the paper itself once, when it is introduced. Explain everything else with animation, not slides.
-- **Motion:** Use deliberate, story-led movement: a suspicious note travels
-  through the detective's inspection; removing one source changes the evidence;
-  causal-support bars reveal why the page is scrubbed. Keep transitions
-  continuous across the request, agent, detector, and outcome.
-- **Avoid:** Neon, decorative grids and gradients, repeated rounded cards, and
-  diagrams that add more labels than the narration needs. Prefer animated
-  characters and evidence over explanatory paragraphs on screen.
+**An editorial cartoon with a narrator, not a narrated slide deck.**
+The visual signature is warm paper, dark ink, a restrained scissor motif,
+and a recognizable recurring cast. A viewer must see *what happens* and
+*why*, even on mute. Cleverness belongs in the explanatory action, not
+decorative effects. Preserve this identity in Remotion, Muse, or any editor.
 
-## Series name
+Normative implementation: `src/template/brand.ts`, `characters.tsx`,
+`ui.tsx`, `types.ts`, and `Bookends.tsx`. Use those assets, not approximations
+generated from a text description. `docs/08-muse-agent-contract.md` is the
+production handoff and acceptance checklist.
 
-Research Paper Cuts
+## Colors
 
-## Recurring cast
+Use the exact tokens above. Blue means system/trusted request, green means
+allowed/public/safe, red means attacker/restricted/blocked, ochre means
+caution/cost/delay. Do not color every object with a different accent.
+Character clothing remains its canonical color regardless of scene state.
+Danger chips use `#f6e6e1`; borders use `#d2cfc6`.
+Color must reinforce a label, icon, or action rather than carry meaning alone.
 
-- **Alice** (blue top): the user who gives the agent a task.
-- **Bob** (red hoodie): the attacker who plants instructions in webpages and tool outputs.
-- **AI agent** (robot with an "AI AGENT" name tag): the AI assistant that acts on what it reads.
-- **Bouncer** (sunglasses, SECURITY shirt): the always-on defense that checks every step.
-- **Detective** (magnifying glass): CausalArmor, which steps in only before risky actions.
+## Typography
 
-## Host and logo
+Helvetica Neue with Arial fallback for UI; Avenir Next with Helvetica/Arial
+fallback for captions. Do not require a private font or font-download service.
+Scene heading 46 px bold, at most five words. Object labels generally
+24-30 px, at most three words; source notes may be smaller but never below
+17 px at full resolution. Captions are 52 px bold, at most two lines,
+off-white `#fffdf7`, 2.5 px dark outline, restrained shadow, no backing panel.
+Bookend captions use 36 px and shorter pages in their reserved free band.
+Do not put paragraphs, narration duplicates, or bullet walls inside scenes.
 
-- **Host:** a cartoon of the presenter (`HostCharacter`) is the recurring guide:
-  waving on the title card, pointing when the paper is introduced, and waving
-  in the outro. Poses: `neutral`, `wave`, `point`, `think`; `talking` animates
-  the mouth.
-- **Logo:** `SeriesLogo`, a sheet of paper cut along a red dashed line, beside
-  "RESEARCH / Paper Cuts".
-- Open the `cast-sheet` composition in Studio to see every character.
+## Layout
+
+1080x1920, 30 fps. Essential material stays between y=80 and y=1515;
+social UI can cover the bottom ~400 px and lower right edge.
+Presenter: x=370, y=80, 340x320; preserve face/hair and stable eye line.
+Caption area: x=40, y=405, 1000x145.
+Scene panel: x=64, y=555, 952x960. Use local panel coordinates;
+keep 30 px internal margins and reserve the first 130 px for the heading.
+Nonessential footer starts at y=1540. Do not fill the lower safe-zone reserve
+just because it looks empty on a desktop.
+
+Approved opening: 3 seconds, shared logo, animated cut page, host,
+"Research, made clear.", paper-title slot. Approved closing: 4 seconds,
+rejoining page, waving host, "Follow for more.", large blue website.
+Both cover existing narration; no silence, extra duration, or repeated voice.
+See `docs/07-bookends.md`. Only the opening's paper title changes per episode.
+
+## Elevation & Depth
+
+Flat editorial illustration. Use outlines and object placement, not floating
+dashboard cards or glossy depth. No gradients, neon, glows, glassmorphism,
+ambient animated backgrounds, fake 3D robots, or dramatic drop shadows.
+Caption shadow is a readability treatment, not decorative elevation.
+
+## Shapes
+
+Simple SVG-like geometry, consistent dark outlines, flat fills, expressive
+faces, familiar document/envelope/tool silhouettes. Do not turn characters
+into stick figures, emoji, stock photos, or unrelated AI mascots.
+Avoid pill-shaped everything and rounded startup-dashboard styling.
+The red scissors/cut line is series branding; in technical scenes red still
+means risk, not decorative emphasis.
+
+## Components
+
+**Cast:** Host (mauve polo, dark wavy hair/beard) guides; Alice (blue top)
+is the user; Bob (red hoodie) is the attacker; the white antenna robot is
+the AI agent and always has a readable role tag. Bouncer (black SECURITY
+shirt, sunglasses) and Detective (green hat, lens) are visually distinct.
+Their defense roles are episode-specific: do not present the detective as
+an actual third LLM. CaMeL uses the same robot drawing tagged AI PLANNER
+and AI READER, with isolated contexts and separate responsibilities.
+Use `public/brand/cast-sheet.png` for visual matching.
+
+**Objects:** reuse `SourceChip`, `SourceIcon`, document glyphs, labels,
+and explicit public/private icons. Values should travel from source to
+consumer; a policy check must visibly affect the attempted action.
+Never show sanitization as deletion, returned data as a new planner order,
+or a reader with no tools actually sending a document.
+
+**Motion:** all movement expresses cause -> consequence. One primary
+action at a time. Enter/travel motions typically take 18-45 frames;
+hold a resolved state at least 45 frames when narration permits.
+Start each beat within three frames of its introducing word; stop
+before the next beat. Characters react when outcomes change.
+Animate the transformation in "something it reads becomes something
+it follows": content enters, becomes a directive, then changes the action.
+A static arrow is not enough.
+
+Before implementing scenes, audit the actual narration sentence by sentence
+for animation points. Each important causal verb or transition MUST have
+a timestamped source -> action -> consequence entry and an implemented
+animation. Inspect before/during/after states and reject label-only substitutes.
+Keep the mapping with the episode's storyboard or evidence ledger.
+
+**Background sound:** optional, original or appropriately licensed,
+instrumental and restrained. No vocals, dramatic drops, or loud transitions.
+Maintain narration at least 18 dB above the bed's mean level, verify combined
+peaks remain below clipping, and fade the bed at the start/end. The shared
+`public/brand/audio/soft-beat.wav` is an original four-bar, 90 BPM percussion
+loop; regenerate with `node scripts/create-background-beat.mjs`. Episodes opt
+in using `backgroundAudio`; approved bookend assets remain silent.
+
+**Evidence:** one readable real-paper screenshot at the introduction,
+not a deck of figures. Elsewhere use cartoon action. Charts are acceptable
+only for sourced results: show benchmark/model, units, source table,
+and reported uncertainty. No fabricated numbers or universal safety claims.
+
+## Do's and Don'ts
+
+- Do show the same object through source, processing, and consequence.
+- Do keep readable labels and narration captions synchronized.
+- Do preserve the creator's voice; cut flubs, never fabricate a pickup.
+- Do document claim provenance, role mapping, and policy assumptions.
+- Do provide editable source/project and portable media, not just a video URL.
+- Do reject clipped labels, overlapping cast, hidden role tags, or mid-word cuts.
+- Don't replace animated mechanisms with static diagrams or text cards.
+- Don't reinvent the opening, closing, cast, fonts, or palette for each paper.
+- Don't imply every generated plan is harmless or every answer is true.
+- Don't call a draft "finished" without timing and full-export review.

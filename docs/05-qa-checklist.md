@@ -9,7 +9,8 @@
 ## Visual (stills)
 
 Render a contact sheet with at least 3 frames per scene (start + 20 frames,
-middle, end − 10 frames) and the title card (frame 60):
+middle, end − 10 frames), plus both bookends and the stages of each important
+cause-and-effect animation:
 
 ```console
 rm -rf /tmp/rpc-bundle && npx remotion bundle --out-dir /tmp/rpc-bundle && mkdir -p /tmp/st
@@ -32,17 +33,25 @@ Look at every image and check:
 - [ ] Panel text ≤ heading + short labels. No paragraphs.
 - [ ] Colors follow meaning (red = danger only).
 - [ ] Captions are spelled correctly (names, paper title, benchmarks).
-- [ ] Captions start only after the title card.
+- [ ] Captions run throughout approved bookends in their reserved band.
 
 ## Story
 
+- [ ] Actual narration reviewed sentence by sentence; every important action
+      has a timestamped animation entry in the episode's beat mapping.
+- [ ] Every mapped entry is implemented: inspect its before, transition, and
+      consequence. Reject static diagrams or text-only substitutes.
 - [ ] Watch on mute: is the story clear from captions + animation alone?
 - [ ] Each beat starts on its trigger word (spot-check 5 beats in Studio).
 - [ ] Every visual matches the paper's mechanism; no invented numbers.
 - [ ] The paper screenshot appears exactly once.
+- [ ] Background audio, if used, is instrumental, quiet below narration,
+      loop-safe, and faded at the boundaries; voice remains intelligible.
 
 ## Final render
 
+- Export only when the creator requests it; preview-only work stops after
+  the automated, visual, and story checks above.
 - [ ] `npm run render -- <slug>`; `ffprobe` shows `1080,1920,30/1` and expected duration.
 - [ ] Spot-check 3 frames from the final MP4 with
       `ffmpeg -ss <sec> -i out/<slug>.mp4 -frames:v 1 /tmp/x.png`.

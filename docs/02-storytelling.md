@@ -6,8 +6,9 @@ video, the captions plus the animation should still tell the whole story.
 
 ## The shape of an episode
 
-1. **Title card (0–5 s).** Full-screen creator video + a card with the series
-   logo, a one-line **hook question**, and the waving host cartoon.
+1. **Shared opening (0–3 s).** Approved scissor-cut animation, series logo,
+   "Research, made clear.", and the paper-title slot. Narration and captions
+   start immediately; do not add silence or an extra hook card.
 2. **The status quo / problem (1–2 scenes).** Show how things work today and
    why it hurts, with the cast. Make the pain visible (someone waits, gets
    tricked, gets blocked).
@@ -17,8 +18,9 @@ video, the captions plus the animation should still tell the whole story.
    in; the host cartoon points at it. Name the paper and the lab. This is the
    *only* place the paper screenshot appears.
 5. **How it works (1–2 scenes).** The mechanism, step by step, still as a story.
-6. **Results + outro (1 scene).** What the paper reports (faithfully), a happy
-   ending for the user character, the cast lineup, logo, "Follow for more".
+6. **Results + closing (1 scene).** What the paper reports, including limitations.
+   The approved 4-second closing overlays the end of the narration with the
+   waving host, "Follow for more.", and website. See [07-bookends](07-bookends.md).
 
 5–8 scenes total, each with a single idea. A scene is 10–25 s.
 
@@ -51,6 +53,17 @@ Rules:
 ## Turning ideas into actions
 
 Ask, for every sentence of narration: *what would a cartoon show here?*
+
+**Mandatory animation audit:** review the actual take, not just the script.
+Mark the important verbs and transitions: reading becoming following,
+writing steps, extracting values, transferring data, checking permissions,
+blocking or allowing actions, changing outcomes. For each, record the spoken
+sentence, clean-timeline trigger timestamp/frame, source object, transformation,
+and visible consequence in the episode's storyboard or evidence ledger.
+Implement every marked beat and inspect before/during/after states.
+A scene entrance, floating keyword, static arrow, or narration caption alone
+does not satisfy this requirement. Identity/citation text may remain still;
+mechanisms and causal transitions may not.
 
 | Narration idea | Show it as |
 | --- | --- |

@@ -1,0 +1,64 @@
+{
+  "order": 1,
+  "category": "prompt-injection-defenses",
+  "slug": "causalarmor",
+  "title": "CausalArmor: Efficient Indirect Prompt Injection Guardrails via Causal Attribution",
+  "paper_url": "https://arxiv.org/abs/2602.07918",
+  "paper_version": "arXiv:2602.07918v1",
+  "paper_date": "2026-02-08",
+  "status": "draft",
+  "affiliations": [
+    {
+      "author": "Minbeom Kim",
+      "institutions": [
+        "Google Cloud AI Research",
+        "Seoul National University"
+      ]
+    },
+    {
+      "author": "Mihir Parmar",
+      "institutions": [
+        "Google Cloud AI Research"
+      ]
+    },
+    {
+      "author": "Phillip Wallis",
+      "institutions": [
+        "Google"
+      ]
+    },
+    {
+      "author": "Lesly Miculicich",
+      "institutions": [
+        "Google Cloud AI Research"
+      ]
+    },
+    {
+      "author": "Kyomin Jung",
+      "institutions": [
+        "Seoul National University"
+      ]
+    },
+    {
+      "author": "Krishnamurthy Dj Dvijotham",
+      "institutions": [
+        "Google DeepMind"
+      ]
+    },
+    {
+      "author": "Long T. Le",
+      "institutions": [
+        "Google Cloud AI Research"
+      ]
+    },
+    {
+      "author": "Tomas Pfister",
+      "institutions": [
+        "Google Cloud AI Research"
+      ]
+    }
+  ],
+  "script_word_count": 191,
+  "estimated_script_runtime_seconds": 82,
+  "runtime_basis": "Spoken word count at 140 words per minute; canonical outro included."
+}

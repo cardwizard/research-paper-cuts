@@ -9,4 +9,11 @@ out
 # Raw recordings are too large for git (>100 MB); keep only recording-clean.mp4.
 public/episodes/*/recording.mov
 public/episodes/*/recording.MOV
+public/episodes/*/recording.mp4
+public/episodes/*/recording.m4v
+website-proposals/
+# Locally downloaded research evidence; authored ledgers contain canonical URLs.
+content/*/sources/
+content/*/assets/*.pdf
+content/*/assets/paper-fulltext.txt
 .impeccable/

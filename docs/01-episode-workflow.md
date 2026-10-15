@@ -5,10 +5,10 @@ verify it. `<slug>` is a short kebab-case id for the paper, e.g. `causal-armor`.
 
 ## 0. Prerequisites
 
-- Node ≥ 20 (tested on Node 25), `ffmpeg`/`ffprobe`, `pdftotext` (poppler).
-- `npm install` once. Remotion Studio: `npm run dev` → http://localhost:3000.
+- Node 22+ (tested on Node 25), `ffmpeg`/`ffprobe`, `pdftotext` (poppler).
+- `npm ci` once, using the public npm registry. Remotion Studio: `npm run dev` → http://localhost:3000.
 - Transcription uses `@remotion/whisper-webgpu`; it needs a WebGPU-capable
-  machine (Apple Silicon macOS works). If it is unavailable, ask the creator
+  machine and Node 25+ for this script (Apple Silicon macOS works). If it is unavailable, ask the creator
   for a transcript or use another Whisper build that outputs word timestamps
   in Remotion `Caption` format (`text`, `startMs`, `endMs`, `timestampMs`,
   `confidence`).
@@ -98,7 +98,9 @@ leading space that Whisper tokens carry:
 Re-run `prepare-captions` after editing fixes. Proper nouns, paper names and
 benchmark names must be spelled exactly as in the paper.
 
-Captions only show after the title card (`titleCardMs`, default 5000 ms).
+Approved bookends keep captions visible throughout the recording, using a
+smaller reserved band during the opening and closing. Only legacy episodes
+without `bookendPaperTitle` hide captions during `titleCardMs` (default 5000 ms).
 
 ## 5. Build a beat sheet from the transcript
 
@@ -127,6 +129,7 @@ export const myPaper: Episode = {
   recording: "episodes/my-paper/recording-clean.mp4",
   hook: "What if AI defense were a detective, not a bouncer?", // ≤ 10 words, a question
   citation: "PaperName · arXiv:XXXX.XXXXX · Lab",
+  bookendPaperTitle: "PaperName", // approved 3-second opening / 4-second closing
   captions: captions as Caption[],
   facePosition: "50% 24%",      // CSS object-position for the face crop (optional)
   // hookCharacter: <DetectiveCharacter size={140} />, // default: waving host
@@ -160,9 +163,10 @@ ffmpeg -y -i /tmp/st/f120.png -i /tmp/st/f300.png -i /tmp/st/f480.png -filter_co
 
 `remotion still` must be run from the project root.
 
-## 8. QA, render, deliver
+## 8. QA, preview, and export
 
-Run everything in [05-qa-checklist](05-qa-checklist.md), then:
+Run the preview checks in [05-qa-checklist](05-qa-checklist.md) and show the
+interactive composition. When the creator requests an export:
 
 ```console
 npm run render -- <slug>   # → out/<slug>.mp4

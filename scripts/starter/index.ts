@@ -7,6 +7,7 @@ export const __CAMEL__: Episode = {
   slug: "__SLUG__",
   recording: "episodes/__SLUG__/recording-clean.mp4",
   hook: "One-line hook for the title card?",
+  bookendPaperTitle: "Replace with the paper display title",
   citation: "Paper title · arXiv:XXXX.XXXXX · Lab",
   captions: captions as Caption[],
   // Durations in frames (30 fps). Make them sum to the clean recording length.

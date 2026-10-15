@@ -24,6 +24,10 @@ export type Episode = {
   captions: Caption[];
   /** Length of the full-screen title card. Captions start after it. */
   titleCardMs?: number;
+  /** Opt in to the shared 3-second opening and 4-second closing. */
+  bookendPaperTitle?: string;
+  /** Optional quiet instrumental bed, relative to public/. */
+  backgroundAudio?: string;
   scenes: EpisodeScene[];
 };
 

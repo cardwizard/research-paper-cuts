@@ -1,0 +1,49 @@
+{
+  "order": 5,
+  "slug": "agentdojo",
+  "category": "security-evaluations",
+  "title": "AgentDojo: can an AI assistant keep doing your job when someone else gives it orders?",
+  "status": "draft",
+  "paper": {
+    "title": "AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents",
+    "url": "https://arxiv.org/abs/2406.13352",
+    "version_url": "https://arxiv.org/abs/2406.13352v3",
+    "pdf_url": "https://arxiv.org/pdf/2406.13352v3",
+    "version": "v3",
+    "date": "2024-11-24",
+    "first_submitted": "2024-06-19",
+    "venue": "NeurIPS 2024, Datasets and Benchmarks track",
+    "authors": [
+      {"name": "Edoardo Debenedetti", "affiliations": ["ETH Zurich"]},
+      {"name": "Jie Zhang", "affiliations": ["ETH Zurich"]},
+      {"name": "Mislav Balunović", "affiliations": ["ETH Zurich", "Invariant Labs"]},
+      {"name": "Luca Beurer-Kellner", "affiliations": ["ETH Zurich", "Invariant Labs"]},
+      {"name": "Marc Fischer", "affiliations": ["ETH Zurich", "Invariant Labs"]},
+      {"name": "Florian Tramèr", "affiliations": ["ETH Zurich"]}
+    ],
+    "affiliations": ["ETH Zurich", "Invariant Labs"],
+    "verified_on": "2026-10-14",
+    "full_text_read": true,
+    "pdf_sha256": "349884fffbf43282591c5accffd57bb651632f38e412fe303114941bdd111b05"
+  },
+  "narration": {
+    "file": "video-script.md",
+    "spoken_word_count": 0,
+    "words_per_minute": 140,
+    "estimated_runtime_seconds": 0,
+    "storyboard_target_seconds": 97,
+    "canonical_outro": "I break down the top papers in AI research. Follow for more.",
+    "recording_status": "not_recorded",
+    "render_status": "not_rendered"
+  },
+  "article": {
+    "file": "article.md",
+    "word_count": 0
+  },
+  "video_url": null,
+  "evidence_caveats": [
+    "v3 prose and numerical tables contain inconsistencies; article comparisons are explicitly pinned to Table 5.",
+    "Published results were not independently reproduced.",
+    "A benchmark is not a guaranteed defense."
+  ]
+}

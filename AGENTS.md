@@ -10,6 +10,11 @@ from the captions and the animation alone**.
 This file is the entry point. Read it fully, then read the guides in `docs/`
 before changing anything:
 
+**Required design contract:** [DESIGN.md](DESIGN.md) and
+[docs/08-muse-agent-contract.md](docs/08-muse-agent-contract.md) define the
+approved visual language, artifacts, and rejection criteria. A plausible
+generic explainer is not an acceptable substitute.
+
 | Guide | Read it when |
 | --- | --- |
 | [docs/01-episode-workflow.md](docs/01-episode-workflow.md) | Making a new episode end to end (recording → render) |
@@ -18,6 +23,8 @@ before changing anything:
 | [docs/04-animation-cookbook.md](docs/04-animation-cookbook.md) | Writing scene code: timing, motion patterns, copy-paste snippets |
 | [docs/05-qa-checklist.md](docs/05-qa-checklist.md) | Before you say you are done — always |
 | [docs/06-creator-feedback.md](docs/06-creator-feedback.md) | Past feedback from the creator. Do not repeat these mistakes |
+| [docs/07-bookends.md](docs/07-bookends.md) | Approved opening/closing and continuous audio |
+| [docs/08-muse-agent-contract.md](docs/08-muse-agent-contract.md) | External-tool handoff, deliverables, design acceptance |
 | [PRODUCT.md](PRODUCT.md), [DESIGN.md](DESIGN.md) | Series brief and visual direction |
 
 ## Non-negotiable rules
@@ -42,6 +49,13 @@ before changing anything:
 6. **Sync to narration.** Each visual beat starts on the word that introduces
    it. Use the word timestamps in `captions.json` to place beats (see
    workflow guide). Animations that lag or lead the voice feel wrong.
+   Review the actual recording sentence by sentence before building scenes.
+   Identify every important change, transfer, decision, boundary, failure,
+   and result; map each to a trigger word, timestamp, and concrete
+   cause -> action -> consequence. Implement and check each mapped animation,
+   not just entrances for its labels. Static arrows and caption-only
+   explanations do not count. Keep the beat mapping in the episode's
+   `sources.md` or `storyboard.md`; see docs/02 and docs/05.
 7. **Nothing overflows.** No text spills outside its box, nothing is clipped
    by the panel edge, nothing overlaps the presenter inset, captions, or
    footer. Check with stills, not assumptions.
@@ -55,7 +69,8 @@ before changing anything:
    [docs/07-bookends.md](docs/07-bookends.md); do not invent new branding.
    They overlay existing narration rather than extending its timeline.
 10. **Verify before claiming done.** `npm run lint` passes, stills reviewed,
-    final render checked with `ffprobe` (1080×1920, 30 fps, expected length).
+    preview reviewed. When an export is requested, check the final render with
+    `ffprobe` (1080×1920, 30 fps, expected length) and review its audio.
 
 ## Repository map
 
@@ -95,7 +110,7 @@ out/                      renders (git-ignored)
 ## Commands
 
 ```console
-npm install                              # once
+npm ci                                   # once; public npm registry
 npm run dev                              # Remotion Studio at http://localhost:3000
 npm run new-episode -- <slug>            # scaffold src/episodes/<slug> + public/episodes/<slug>
 npm run prepare-video -- <slug>          # recording.* → recording-clean.mp4

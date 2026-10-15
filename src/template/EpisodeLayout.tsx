@@ -1,4 +1,4 @@
-import { Video } from "@remotion/media";
+import { Audio, Video } from "@remotion/media";
 import React from "react";
 import {
   AbsoluteFill,
@@ -6,11 +6,18 @@ import {
   Series,
   staticFile,
   useVideoConfig,
+  useCurrentFrame,
 } from "remotion";
 import { BasicCaptions } from "./BasicCaptions";
-import { colors } from "./brand";
+import { ClosingScreen, OpeningScreen } from "./Bookends";
+import { colors, ease } from "./brand";
 import { HostCharacter } from "./characters";
-import { DEFAULT_TITLE_CARD_MS, LAYOUT, type Episode } from "./types";
+import {
+  DEFAULT_TITLE_CARD_MS,
+  LAYOUT,
+  episodeDuration,
+  type Episode,
+} from "./types";
 import { SeriesLogo } from "./ui";
 
 /**
@@ -21,6 +28,10 @@ export const EpisodeLayout: React.FC<{ episode: Episode }> = ({ episode }) => {
   const { fps } = useVideoConfig();
   const titleCardMs = episode.titleCardMs ?? DEFAULT_TITLE_CARD_MS;
   const facePosition = episode.facePosition ?? "50% 24%";
+  const hasBookends = episode.bookendPaperTitle !== undefined;
+  const closingFrame = episodeDuration(episode) - 4 * fps;
+  const frame = useCurrentFrame();
+  const inBookend = hasBookends && (frame < 3 * fps || frame >= closingFrame);
 
   return (
     <AbsoluteFill
@@ -31,6 +42,24 @@ export const EpisodeLayout: React.FC<{ episode: Episode }> = ({ episode }) => {
         overflow: "hidden",
       }}
     >
+      {episode.backgroundAudio ? (
+        <Audio
+          name="Quiet background beat"
+          src={staticFile(episode.backgroundAudio)}
+          loop
+          premountFor={fps}
+          volume={
+            0.25 *
+            ease(frame, 0, fps) *
+            (1 -
+              ease(
+                frame,
+                episodeDuration(episode) - 2 * fps,
+                episodeDuration(episode) - 1,
+              ))
+          }
+        />
+      ) : null}
       <div
         style={{
           border: "1px solid #d2cfc6",
@@ -81,68 +110,96 @@ export const EpisodeLayout: React.FC<{ episode: Episode }> = ({ episode }) => {
         <SeriesLogo size={44} color={colors.muted} />
         <span>{episode.citation}</span>
       </div>
-      <Sequence
-        name="Title card"
-        durationInFrames={Math.round((titleCardMs / 1000) * fps)}
-      >
-        <AbsoluteFill
-          style={{ backgroundColor: "#171817", overflow: "hidden" }}
+      {!hasBookends ? (
+        <Sequence
+          name="Title card"
+          durationInFrames={Math.round((titleCardMs / 1000) * fps)}
         >
-          <Video
-            src={staticFile(episode.recording)}
-            objectFit="cover"
-            volume={0}
-            style={{
-              height: "100%",
-              objectPosition: facePosition,
-              width: "100%",
-            }}
-          />
-          <div
-            style={{
-              alignItems: "center",
-              backgroundColor: "rgba(241,239,233,0.97)",
-              bottom: LAYOUT.titleCardBoxBottom,
-              display: "flex",
-              gap: 18,
-              left: 48,
-              padding: "32px 36px 38px",
-              position: "absolute",
-              right: 48,
-            }}
+          <AbsoluteFill
+            style={{ backgroundColor: "#171817", overflow: "hidden" }}
           >
-            <div style={{ flex: 1 }}>
-              <div style={{ marginBottom: 22 }}>
-                <SeriesLogo size={84} />
+            <Video
+              src={staticFile(episode.recording)}
+              objectFit="cover"
+              volume={0}
+              style={{
+                height: "100%",
+                objectPosition: facePosition,
+                width: "100%",
+              }}
+            />
+            <div
+              style={{
+                alignItems: "center",
+                backgroundColor: "rgba(241,239,233,0.97)",
+                bottom: LAYOUT.titleCardBoxBottom,
+                display: "flex",
+                gap: 18,
+                left: 48,
+                padding: "32px 36px 38px",
+                position: "absolute",
+                right: 48,
+              }}
+            >
+              <div style={{ flex: 1 }}>
+                <div style={{ marginBottom: 22 }}>
+                  <SeriesLogo size={84} />
+                </div>
+                <div
+                  style={{
+                    color: colors.text,
+                    fontSize: 58,
+                    fontWeight: 700,
+                    letterSpacing: -1,
+                    lineHeight: 1.08,
+                  }}
+                >
+                  {episode.hook}
+                </div>
               </div>
-              <div
-                style={{
-                  color: colors.text,
-                  fontSize: 58,
-                  fontWeight: 700,
-                  letterSpacing: -1,
-                  lineHeight: 1.08,
-                }}
-              >
-                {episode.hook}
-              </div>
+              {episode.hookCharacter ?? (
+                <HostCharacter pose="wave" size={140} />
+              )}
             </div>
-            {episode.hookCharacter ?? <HostCharacter pose="wave" size={140} />}
-          </div>
-        </AbsoluteFill>
-      </Sequence>
+          </AbsoluteFill>
+        </Sequence>
+      ) : (
+        <>
+          <Sequence
+            name="Series opening"
+            durationInFrames={3 * fps}
+            premountFor={fps}
+          >
+            <OpeningScreen
+              paperTitle={episode.bookendPaperTitle ?? ""}
+              audioSrc=""
+              audioStartSeconds={0}
+            />
+          </Sequence>
+          <Sequence
+            name="Series closing"
+            from={closingFrame}
+            durationInFrames={4 * fps}
+            premountFor={fps}
+          >
+            <ClosingScreen paperTitle="" audioSrc="" audioStartSeconds={0} />
+          </Sequence>
+        </>
+      )}
       <BasicCaptions
         name="Narration captions"
         premountFor={fps}
-        width={1000}
+        width={inBookend ? 900 : 1000}
+        fontSize={inBookend ? 36 : 52}
+        combineTokensWithinMilliseconds={inBookend ? 1500 : 3000}
         style={{
-          height: LAYOUT.captions.height,
-          left: 40,
+          height: inBookend ? 65 : LAYOUT.captions.height,
+          left: inBookend ? 90 : 40,
           position: "absolute",
-          top: LAYOUT.captions.top,
+          top: inBookend ? 342 : LAYOUT.captions.top,
         }}
         captions={episode.captions.filter(
-          (caption) => caption.startMs >= titleCardMs,
+          (caption) => hasBookends || caption.startMs >= titleCardMs,
         )}
       />
     </AbsoluteFill>
