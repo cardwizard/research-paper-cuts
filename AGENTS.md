@@ -25,9 +25,16 @@ generic explainer is not an acceptable substitute.
 | [docs/06-creator-feedback.md](docs/06-creator-feedback.md) | Past feedback from the creator. Do not repeat these mistakes |
 | [docs/07-bookends.md](docs/07-bookends.md) | Approved opening/closing and continuous audio |
 | [docs/08-muse-agent-contract.md](docs/08-muse-agent-contract.md) | External-tool handoff, deliverables, design acceptance |
+| [docs/09-quick-takes.md](docs/09-quick-takes.md) | Unscripted release reactions and record-first videos without a paper |
 | [PRODUCT.md](PRODUCT.md), [DESIGN.md](DESIGN.md) | Series brief and visual direction |
 
 ## Non-negotiable rules
+
+**Quick-take mode:** use `.github/skills/quick-take/SKILL.md` for a release,
+announcement, or spontaneous idea. Keep this brand and pipeline, but verify
+against primary release sources instead of requiring a paper/PDF. Use the
+release/topic title in the existing bookend title slot. Choose visuals that
+fit the topic; do not force the security cast or a fake paper citation.
 
 1. **Story, not slides.** Explain every idea with characters doing things
    (moving, reacting, getting blocked, being cleaned up). Never put a
@@ -118,6 +125,7 @@ out/                      renders (git-ignored)
 npm ci                                   # once; public npm registry
 npm run dev                              # Remotion Studio at http://localhost:3000
 npm run new-episode -- <slug>            # scaffold src/episodes/<slug> + public/episodes/<slug>
+npm run new-episode -- <slug> --quick-take # release/topic scaffold + sources and storyboard
 npm run prepare-video -- <slug>          # recording.* → recording-clean.mp4
 npm run transcribe -- <slug>             # → captions-medium.json (needs WebGPU; macOS works)
 npm run prepare-captions -- <slug>       # → captions.json

@@ -91,6 +91,16 @@ path remains only for episodes that do not opt into bookends.
 (trimmed, lowercase) and replaces them, with `null` leaving a word unchanged.
 For example, `{ "match": ["causal", "armor"], "replace": [null, "Armor"] }`.
 
+## Quick takes from an unscripted recording
+
+For release reactions and new ideas without a paper, use the project
+[quick-take skill](.github/skills/quick-take/SKILL.md) and
+[record-first workflow](docs/09-quick-takes.md).
+Run `npm run new-episode -- my-release --quick-take` to register an episode
+with source and storyboard templates. Your recording drives the narration
+and word-timed visuals; the existing brand, presenter, captions, and bookends
+stay intact. The scaffold is a starting point, not an automatically finished video.
+
 ## Episodes
 
 - `causal-armor`: CausalArmor (Google DeepMind, arXiv:2602.07918)
