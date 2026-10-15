@@ -1,7 +1,8 @@
 # Muse and external-agent production contract
 
-This is a reusable handoff, with concrete feedback from the supplied CaMeL
-`camel-final.MP4` below.
+This is a reusable production handoff. Keep one-off export reviews,
+timestamped defect reports, and episode-specific revision prompts in chat
+or local review files, not in the repository's shared instructions.
 The creator approves narrative/content changes; agents may implement motion
 and correct transcription spelling, but must not silently rewrite speech.
 Treat MUST as acceptance requirements, not optional inspiration.
@@ -142,34 +143,6 @@ unperformed listening/review honestly; never substitute stills for audio review.
 When comparing a supplied Muse video, report timestamp, observed difference,
 contract violated, and exact fix. Do not criticize features you have not seen.
 
-## Supplied CaMeL video: observed differences
-
-The supplied export is 148.117 seconds, H.264/AAC, 1080x1920, 30 fps.
-It preserves the warm palette, recognizable cast, presenter inset, and
-series identity. Those are strengths to retain. The main gap is explanatory
-action and phone-scale legibility, not a need for a different theme.
-The observations below come from decoded frames and sampled motion sequences;
-they are not a claim of a complete listening review.
-
-| Supplied-video time | Observed difference | Required correction |
-| --- | --- | --- |
-| 00:00.5-00:02.5 | Opening narration captions cross the animated paper's top edge instead of occupying a separate band | Use the bookend caption band from the first spoken word and check moving-artwork bounds; keep narration/captions continuous |
-| 00:29-00:33 | Email, READ label, robot, and attacker line mostly hold; an "Attach forecast" chip fades in, without showing a selected file changing | Track one object: email content enters, becomes a directive, brochure selection changes to restricted forecast. Do not call the pre-CaMeL agent the AI READER: it can decide/act, unlike the quarantined reader |
-| About 00:33 | The outgoing explanatory scene disappears into a panel containing only the small host before the paper/title appears | Keep the previous subject until the incoming subject is ready; inspect boundary frames in the encoded MP4 for incomplete scenes |
-| 01:08-01:20 | Fields, program rows, and "orders BLOCKED" labels mostly remain in place | Show fields travelling into harness variables and activating already-written steps; an attempted return stops at a visible planner boundary |
-| 01:44-01:56 | Public/private labels give way to a detective and an explanatory sentence; no restricted document attempts to cross a gate | Show the document approaching an interpreter/policy gate, being stopped, and the public brochure passing. A detective alone does not explain enforcement and must not imply a third decision-making model |
-| 02:06-02:10 | The chart counts upwards, displays 1 during transition, and settles at 44/0; the 949-attack scope, uncertainty, and table reference are absent | Animate the bar, not a counter through false intermediate measurements. Reveal 44 +/-31.3 and 0 +/-0.0 at the spoken numbers; identify AgentDojo, Claude 3.5 Sonnet, 949 attacks, and Table 7. Zero must not be visible before its spoken reveal |
-| Throughout | Many objects, program rows, and explanatory text are tiny relative to the largely empty panel | Use canonical type sizes and object scale; crop the paper to its title/authors rather than shrinking a complete page. Check labels at phone size. Sparse layout is fine; miniaturized mechanisms are not |
-
-Use the checked-in clean recording and prepared captions rather than the raw
-take. The approved local edit is 143.8 seconds; do not force a 148.117-second
-timeline or repair spoken errors by changing captions alone. Reuse the actual
-bookend clips instead of reconstructing their animation from screenshots.
-The creator also reported intermittently missing arrows and incomplete frames.
-Those reports are acceptance blockers to check, not evidence of a particular
-render-engine cause. The supplied file fully decodes without reported media
-errors; that does not make its blank/partial explanatory scenes acceptable.
-
 ## Pasteable Muse kickoff
 
 > Build this episode as a Research Paper Cuts cartoon story, not a slide deck.
@@ -181,45 +154,3 @@ errors; that does not make its blank/partial explanatory scenes acceptable.
 > limitations. Return an editable project, final portrait MP4, captions, and
 > scene review stills. If something cannot be matched, flag it rather than
 > substituting a generic design or inventing speech.
-
-## Pasteable CaMeL revision prompt
-
-> Revise CaMeL using https://github.com/cardwizard/research-paper-cuts as the
-> implementation reference. Keep the current warm palette, cast, and presenter;
-> do not redesign the visual world. Read AGENTS.md, DESIGN.md, and this contract.
-> Use public/episodes/camel/recording-clean.mp4 and
-> src/episodes/camel/captions.json as the only narration/timing master (143.8 s).
-> Reuse the actual opening/closing clips, paper-title crop, and canonical cast.
->
-> Before animation, audit every narration sentence. Return a beat mapping of
-> trigger word/time -> source object -> action -> visible consequence, then
-> implement every important entry. At "reading becomes following," show email
-> content becoming a directive and changing the selected brochure to a forecast.
-> Show the planner writing steps; the reader has no tools. Move its returned
-> fields into harness variables, not into planner instructions. An attempted
-> return must stop at the isolation boundary. Attach public/internal permission
-> tags and physically stop a restricted document at the policy gate; let the
-> public brochure pass. Use machinery, not a detective deciding whether to send.
->
-> Static arrows, fading keywords, bullet lists, and caption-only explanations
-> do not count as animating these mechanisms. Use the canonical layout and type
-> sizes; keep labels and role tags legible at phone size. Reveal result labels
-> only at their spoken times: 44 +/-31.3 versus 0 +/-0.0, Claude 3.5 Sonnet,
-> AgentDojo, 949 attacks, Table 7. Animate bars, not numerical counters.
-> Keep the recorded limitations and continuous voice. Mix the supplied original
-> instrumental beat quietly beneath narration, with start/end fades.
->
-> Return the editable project/source, final 1080x1920 30 fps H.264 MP4,
-> prepared captions, beat mapping, and before/during/after review frames for
-> every mechanism. Verify there are no label collisions, blank explanatory
-> transitions, clipped captions, premature numbers, or scientific role errors.
-> Flag unsupported requirements instead of replacing them with generic visuals.
->
-> Reserve a non-overlapping caption band from the very first narrated frame,
-> including both bookends; captions must not cover the paper, logo, title,
-> tagline, CTA, or website. Ensure every required arrow has its shaft/head,
-> correct direction, anchored endpoints, and intended visibility. Preload assets
-> and fonts; use deterministic frame-based animation. Inspect the actual MP4
-> frame-by-frame at the opening and around every transition, not just Studio.
-> Reject incomplete scenes, empty explanatory panels, missing arrows, and
-> unresolved assets; fix and re-export before calling the video finished.
