@@ -51,6 +51,9 @@ before changing anything:
    look AI-generated.
 9. **Template first.** Anything reusable goes into `src/template/`. Episode
    folders only hold episode-specific scenes, config, captions and edit data.
+   Use the approved opening and closing from
+   [docs/07-bookends.md](docs/07-bookends.md); do not invent new branding.
+   They overlay existing narration rather than extending its timeline.
 10. **Verify before claiming done.** `npm run lint` passes, stills reviewed,
     final render checked with `ffprobe` (1080×1920, 30 fps, expected length).
 

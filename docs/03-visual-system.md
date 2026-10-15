@@ -80,6 +80,35 @@ danger. Backgrounds of danger chips use `#f6e6e1`.
   Labels wrap to two lines if needed; size chips so they don't have to.
 - `SourceIcon`, `SmallLabel`, `SeriesLogo({ size, color })`, `SeriesLogoMark`.
 
+## Opening and closing screens
+
+`src/template/Bookends.tsx` provides independent `series-opening` (3 seconds)
+and `series-closing` (4 seconds) Studio compositions. The opening splits an
+illustrated research page along the series' scissor motif; the closing reunites
+it, with the recurring host waving and a short follow prompt. These are brand
+illustrations, not screenshots of a real paper.
+
+The opening is identical for every episode: series logo, animated paper cut,
+and recurring host, with the tagline "Research, made clear." A reserved
+"THIS PAPER" area underneath accepts the episode's `paperTitle` via Studio
+props; an empty title leaves the title area blank for an external editor.
+Use a concise display title of at most two lines; the full citation belongs
+in the episode footer. The spoken hook continues underneath the opening.
+Keep the series palette and portrait safe zones.
+
+For Muse or another editor, place these visuals over the first 3 seconds and
+last 4 seconds of the existing narration track; do not insert silent gaps or
+delay the hook. Keep the narration continuous through the screen changes.
+The screen components do not mute, restart, or replace an episode's audio.
+Existing episode layouts are unchanged until these bookends are approved.
+
+For an audio-enabled Studio preview, set `audioSrc` to a file relative to
+`public/` and `audioStartSeconds` to the desired source offset. The default
+preview is silent so it never unexpectedly starts playing a recording.
+When integrating over a master narration track, leave `audioSrc` empty to
+avoid doubling the audio. Carry the editor's narration captions above these
+screens in the unoccupied band between y 320 and 405.
+
 ## Things to avoid
 
 Neon, gradients, glows, emoji, drop-shadow-heavy cards, decorative grids,

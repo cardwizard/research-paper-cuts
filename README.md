@@ -6,6 +6,13 @@ cast and word-level captions, so it still makes sense on mute.
 
 **Agents:** start with [AGENTS.md](AGENTS.md) and the guides in [docs/](docs/).
 
+## Reusable opening and closing
+
+Ready-to-use silent MP4 clips and PNG stills are in
+[`public/brand/bookends/`](public/brand/bookends/). Editable animation source is
+`src/template/Bookends.tsx`. See [bookend instructions](docs/07-bookends.md)
+for paper-title customization, narration overlap, and render commands.
+
 ## Layout
 
 ```
